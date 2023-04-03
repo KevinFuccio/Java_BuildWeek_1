@@ -1,10 +1,13 @@
 package rivenditore;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import abbonamento.Abbonamento;
 import utente.Utente;
 import utils.JpaUtil;
 
@@ -50,5 +53,14 @@ public class RivenditoreDAO {
     public static List<Rivenditore_autorizzato> Rivenditore_autorizzatoFindAll(){
         Query q = em.createNamedQuery("Rivenditore_autorizzato.findAll");
         return (List<Rivenditore_autorizzato> ) q.getResultList();
+    }
+    
+    public static void quantita_emessi_periodo(Integer id, LocalDate inizio,LocalDate fine) {
+    	Query q = em.createQuery("COUNT (*) FROM Rivenditore_autorizzato a WHERE a.id = :id AND (a.Biglietto.data_emissione_biglietto BETWEEN :inizio AND :fine) OR (a.Abbonamento.data_inizio_abbonamento BETWEEN :inizio AND :fine)");
+    	q.setParameter(":id", id );
+    	q.setParameter(":inizio", inizio);
+    	q.setParameter(":fine", fine);
+    	
+    	
     }
 }

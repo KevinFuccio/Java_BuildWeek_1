@@ -1,6 +1,7 @@
 package biglietto;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,6 +25,11 @@ public class Biglietto implements Serializable{
 	private Utente utente;
 	@ManyToOne
 	private Rivenditore_autorizzato rivenditore;
+	private LocalDate data_emissione_biglietto;
+	
+	public LocalDate getData_emissione_biglietto() {
+		return data_emissione_biglietto;
+	}
 	public Biglietto() {
 		super();
 	}
@@ -45,11 +51,14 @@ public class Biglietto implements Serializable{
 	public void setRivenditore(Rivenditore_autorizzato rivenditore) {
 		this.rivenditore = rivenditore;
 	}
-	public Biglietto(boolean scaduto, Utente utente, Rivenditore_autorizzato rivenditore) {
+	
+	public Biglietto(boolean scaduto, Utente utente, Rivenditore_autorizzato rivenditore,
+			LocalDate data_emissione_biglietto) {
 		super();
 		this.scaduto = scaduto;
 		this.utente = utente;
 		this.rivenditore = rivenditore;
+		this.data_emissione_biglietto = data_emissione_biglietto;
 	}
 	@Override
 	public String toString() {

@@ -51,4 +51,6 @@ public class TesseraDAO {
         Query q = em.createNamedQuery("Tessera.findAll");
         return (List<Tessera> ) q.getResultList();
     }
+	
+    
 }

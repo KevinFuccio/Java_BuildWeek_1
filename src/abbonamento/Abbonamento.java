@@ -1,6 +1,7 @@
 package abbonamento;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -22,6 +23,14 @@ public class Abbonamento implements Serializable{
 		private Integer id;
 		@Enumerated(EnumType.STRING)
 		private Tipologia_abbonamento tipologia_abbonamento;
+		private LocalDate data_inizio_abbonamento;
+		private LocalDate data_fine_abbonamento;
+		public LocalDate getData_inizio_abbonamento() {
+			return data_inizio_abbonamento;
+		}
+		public LocalDate getData_fine_abbonamento() {
+			return data_fine_abbonamento;
+		}
 		@ManyToOne
 		private Tessera tessera;
 		@ManyToOne
@@ -29,12 +38,20 @@ public class Abbonamento implements Serializable{
 		public Abbonamento() {
 			super();
 		}
-		public Abbonamento(Tipologia_abbonamento tipologia_abbonamento, Tessera tessera,
+		public Abbonamento(Tipologia_abbonamento tipologia_abbonamento,LocalDate data_inizio_abbonamento, Tessera tessera,
 				Rivenditore_autorizzato rivenditore) {
 			super();
 			this.tipologia_abbonamento = tipologia_abbonamento;
 			this.tessera = tessera;
 			this.rivenditore = rivenditore;
+			if(tipologia_abbonamento == Tipologia_abbonamento.Settimanale) {
+				
+				data_fine_abbonamento = data_inizio_abbonamento.plusDays(7);
+				
+			}else if(tipologia_abbonamento == Tipologia_abbonamento.Mensile) {
+				
+				data_fine_abbonamento = data_inizio_abbonamento.plusMonths(1);
+			}
 		}
 		public Integer getId() {
 			return id;

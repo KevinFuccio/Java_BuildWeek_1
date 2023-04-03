@@ -21,29 +21,41 @@ public class Tessera implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private LocalDate data_inizio_abbonamento;
-	private LocalDate data_fine_abbonamento;
+	private LocalDate data_inizio_tessera;
+	private LocalDate data_fine_tessera;
 	@OneToOne
 	private Utente utente;
 	@OneToMany(mappedBy = "tessera")
 	private List<Abbonamento> abbonamenti;
-	public Integer getId() {
-		return id;
+	
+	
+	
+	public Tessera() {
+		super();
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	
+	
+	public Tessera(LocalDate data_inizio_tessera, Utente utente,
+			List<Abbonamento> abbonamenti) {
+		super();
+		this.data_inizio_tessera = data_inizio_tessera;
+		this.data_fine_tessera = data_inizio_tessera.plusYears(1);
+		this.utente = utente;
+		this.abbonamenti = abbonamenti;
 	}
-	public LocalDate getData_inizio_abbonamento() {
-		return data_inizio_abbonamento;
+
+
+	public LocalDate getData_inizio_tessera() {
+		return data_inizio_tessera;
 	}
-	public void setData_inizio_abbonamento(LocalDate data_inizio_abbonamento) {
-		this.data_inizio_abbonamento = data_inizio_abbonamento;
+	public void setData_inizio_tessera(LocalDate data_inizio_tessera) {
+		this.data_inizio_tessera = data_inizio_tessera;
 	}
-	public LocalDate getData_fine_abbonamento() {
-		return data_fine_abbonamento;
+	public LocalDate getData_fine_tessera() {
+		return data_fine_tessera;
 	}
-	public void setData_fine_abbonamento(LocalDate data_fine_abbonamento) {
-		this.data_fine_abbonamento = data_fine_abbonamento;
+	public void setData_fine_tessera(LocalDate data_fine_tessera) {
+		this.data_fine_tessera = data_fine_tessera;
 	}
 	public Utente getUtente() {
 		return utente;
@@ -57,24 +69,14 @@ public class Tessera implements Serializable{
 	public void setAbbonamenti(List<Abbonamento> abbonamenti) {
 		this.abbonamenti = abbonamenti;
 	}
-	public Tessera(LocalDate data_inizio_abbonamento, LocalDate data_fine_abbonamento, Utente utente,
-			List<Abbonamento> abbonamenti) {
-		super();
-		this.data_inizio_abbonamento = data_inizio_abbonamento;
-		this.data_fine_abbonamento = data_fine_abbonamento;
-		this.utente = utente;
-		this.abbonamenti = abbonamenti;
-	}
-	
-	
-	public Tessera() {
-		super();
+	public Integer getId() {
+		return id;
 	}
 	@Override
 	public String toString() {
-		return "Tessera [Id=" + getId() + ",Data_inizio_abbonamento=" + getData_inizio_abbonamento()
-				+ ", Data_fine_abbonamento=" + getData_fine_abbonamento() + ", Utente=" + getUtente()
-				+ ", Abbonamenti=" + getAbbonamenti() + "]";
+		return "Tessera [Data_inizio_tessera=" + getData_inizio_tessera() + ", Data_fine_tessera="
+				+ getData_fine_tessera() + ", Utente=" + getUtente() + ", Abbonamenti=" + getAbbonamenti()
+				+ ", Id=" + getId() + "]";
 	}
 	
 	
