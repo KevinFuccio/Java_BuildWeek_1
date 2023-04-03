@@ -1,4 +1,4 @@
-package models;
+package utente;
 
 import java.util.List;
 
@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import biglietto.Biglietto;
+import tessera.Tessera;
 
 @Entity
 public class Utente {

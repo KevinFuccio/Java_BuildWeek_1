@@ -1,4 +1,4 @@
-package models;
+package rivenditore;
 
 import javax.persistence.Entity;
 

@@ -1,4 +1,4 @@
-package models;
+package abbonamento;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,6 +7,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import rivenditore.Rivenditore_autorizzato;
+import tessera.Tessera;
 
 @Entity
 public class Abbonamento {

@@ -1,10 +1,13 @@
-package models;
+package biglietto;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import rivenditore.Rivenditore_autorizzato;
+import utente.Utente;
 
 @Entity
 public class Biglietto {
