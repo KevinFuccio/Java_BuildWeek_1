@@ -28,7 +28,7 @@ public class AbbonamentoDAO {
 
 
 
-    public static Utente findAbbonamento(Integer id) {
+    public static Abbonamento findAbbonamento(Integer id) {
         em.getTransaction().begin();
         Abbonamento e = em.find(Abbonamento.class, id);
         em.getTransaction().commit();
