@@ -5,7 +5,7 @@ import javax.persistence.Persistence;
 
 public class JpaUtil {
 
-	private static final EntityManagerFactory entityManagerFactory;
+	public static final EntityManagerFactory entityManagerFactory;
 
 	static {
 		try {
