@@ -3,6 +3,7 @@ package utente;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.Cascade;
 
 import biglietto.Biglietto;
 import tessera.Tessera;
@@ -24,7 +27,8 @@ public class Utente implements Serializable{
 	private Integer id;
 	@OneToMany(mappedBy = "utente")
 	private List<Biglietto>biglietto;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.MERGE)
+	@Cascade(value = CascadeType.SAVE_UPDATE)
 	private Tessera tessera;
 	public Utente() {
 		super();
@@ -47,7 +51,9 @@ public class Utente implements Serializable{
 	public Utente(List<Biglietto> biglietto, Tessera tessera) {
 		super();
 		this.biglietto = biglietto;
+		this.biglietto.forEach(e -> e.setUtente(this));
 		this.tessera = tessera;
+		this.tessera.setUtente(this);
 	}
 	
 

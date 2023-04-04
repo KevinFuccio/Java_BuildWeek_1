@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +24,7 @@ public class Tessera implements Serializable{
 	private Integer id;
 	private LocalDate data_inizio_tessera;
 	private LocalDate data_fine_tessera;
-	@OneToOne
+	@OneToOne(mappedBy = "tessera")
 	private Utente utente;
 	@OneToMany(mappedBy = "tessera")
 	private List<Abbonamento> abbonamenti;
@@ -35,13 +36,12 @@ public class Tessera implements Serializable{
 	}
 	
 	
-	public Tessera(LocalDate data_inizio_tessera, Utente utente,
-			List<Abbonamento> abbonamenti) {
+	public Tessera(LocalDate data_inizio_tessera,List<Abbonamento> abbonamenti) {
 		super();
 		this.data_inizio_tessera = data_inizio_tessera;
 		this.data_fine_tessera = data_inizio_tessera.plusYears(1);
-		this.utente = utente;
 		this.abbonamenti = abbonamenti;
+		this.abbonamenti.forEach(e-> e.setTessera(this));
 	}
 
 

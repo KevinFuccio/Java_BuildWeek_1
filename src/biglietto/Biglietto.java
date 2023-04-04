@@ -3,6 +3,7 @@ package biglietto;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,12 +23,12 @@ public class Biglietto implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private boolean scaduto;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Utente utente;
 	@ManyToOne
 	private Rivenditore_autorizzato rivenditore;
 	private LocalDate data_emissione_biglietto;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Mezzo mezzo_timbrante;
 	
 	public LocalDate getData_emissione_biglietto() {
@@ -55,14 +56,20 @@ public class Biglietto implements Serializable{
 		this.rivenditore = rivenditore;
 	}
 	
-	public Biglietto(boolean scaduto, Utente utente, Rivenditore_autorizzato rivenditore,
+	
+	public Mezzo getMezzo_timbrante() {
+		return mezzo_timbrante;
+	}
+	public void setMezzo_timbrante(Mezzo mezzo_timbrante) {
+		this.mezzo_timbrante = mezzo_timbrante;
+	}
+	public Biglietto(boolean scaduto,
 			LocalDate data_emissione_biglietto) {
 		super();
 		this.scaduto = scaduto;
-		this.utente = utente;
-		this.rivenditore = rivenditore;
 		this.data_emissione_biglietto = data_emissione_biglietto;
 	}
+	
 	@Override
 	public String toString() {
 		return "Biglietto [isScaduto()=" + isScaduto() + ", Utente()=" + getUtente() + ", Rivenditore()="

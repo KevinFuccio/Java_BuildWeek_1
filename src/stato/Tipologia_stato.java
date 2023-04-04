@@ -1,4 +1,4 @@
-package mezzi;
+package stato;
 
 public enum Tipologia_stato {
 

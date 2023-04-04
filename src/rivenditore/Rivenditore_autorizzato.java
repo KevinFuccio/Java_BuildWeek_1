@@ -48,7 +48,9 @@ public class Rivenditore_autorizzato implements Serializable{
 	public Rivenditore_autorizzato(List<Abbonamento> abbonamenti, List<Biglietto> biglietti) {
 		super();
 		this.abbonamenti = abbonamenti;
+		this.abbonamenti.forEach(e-> e.setRivenditore(this));
 		this.biglietti = biglietti;
+		this.biglietti.forEach(e-> e.setRivenditore(this));
 	}
 	
 	public Rivenditore_autorizzato() {
