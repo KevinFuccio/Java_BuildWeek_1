@@ -16,7 +16,7 @@ public class RivenditoreDAO {
 
     public static void saveRivenditore_autorizzato(Rivenditore_autorizzato e) {
         em.getTransaction().begin();
-        em.persist(e);
+        em.merge(e);
         em.getTransaction().commit(); 
         System.out.println("Rivenditore_autorizzato salvato");
 
@@ -56,12 +56,16 @@ public class RivenditoreDAO {
     }
     
     public static void quantita_emessi_periodo(Integer id, LocalDate inizio,LocalDate fine) {
-    	Query q = em.createQuery("COUNT (*) FROM Rivenditore_autorizzato a WHERE a.id = :id AND (a.Biglietto.data_emissione_biglietto BETWEEN :inizio AND :fine) OR (a.Abbonamento.data_inizio_abbonamento BETWEEN :inizio AND :fine)");
-    	q.setParameter(":id", id );
-    	q.setParameter(":inizio", inizio);
-    	q.setParameter(":fine", fine);
+    	Query q = em.createQuery("SELECT b FROM Biglietto b  WHERE b.rivenditore.id = :id AND (b.data_emissione_biglietto BETWEEN :inizio AND :fine)");
+    	Query q2 = em.createQuery("SELECT b FROM Abbonamento b  WHERE b.rivenditore.id = :id AND (b.data_inizio_abbonamento BETWEEN :inizio AND :fine)");
+    	q.setParameter("id", id );
+    	q.setParameter("inizio", inizio);
+    	q.setParameter("fine", fine);
+    	q2.setParameter("id", id );
+    	q2.setParameter("inizio", inizio);
+    	q2.setParameter("fine", fine);
     	
-    	System.out.println(q.getSingleResult());    	
+    	System.out.println("numero biglietti emessi: "+q.getResultList().size() +" numero abbonamenti emessi: "+ q2.getResultList().size());    	
     }
     
     

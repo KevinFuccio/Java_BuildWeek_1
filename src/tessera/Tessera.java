@@ -24,7 +24,7 @@ public class Tessera implements Serializable{
 	private Integer id;
 	private LocalDate data_inizio_tessera;
 	private LocalDate data_fine_tessera;
-	@OneToOne(mappedBy = "tessera")
+	@OneToOne(cascade = CascadeType.ALL)
 	private Utente utente;
 	@OneToMany(mappedBy = "tessera")
 	private List<Abbonamento> abbonamenti;

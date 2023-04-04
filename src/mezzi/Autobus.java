@@ -2,9 +2,14 @@ package mezzi;
 
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 import biglietto.Biglietto;
 import stato.Stato;
 
+@Entity
+@DiscriminatorValue("autobus")
 public class Autobus extends Mezzo {
 	private static Integer capienza = 40;
 

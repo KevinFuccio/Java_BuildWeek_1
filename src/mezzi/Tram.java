@@ -2,9 +2,15 @@ package mezzi;
 
 import java.util.List;
 
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 import biglietto.Biglietto;
 import stato.Stato;
 
+@Entity
+@DiscriminatorValue("tram")
 public class Tram extends Mezzo {
 	
 	

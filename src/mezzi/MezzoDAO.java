@@ -13,7 +13,7 @@ public class MezzoDAO {
 
     public static void saveMezzo(Mezzo e) {
         em.getTransaction().begin();
-        em.persist(e);
+        em.merge(e);
         em.getTransaction().commit(); 
         System.out.println("Mezzo  salvato");
 
@@ -52,8 +52,8 @@ public class MezzoDAO {
         return (List<Mezzo> ) q.getResultList();
     }
     public static void sommaBigliettiVidimato(Integer id){
-    	Query q = em.createQuery("SELECT m FROM Mezzo m WHERE m.biglietto.id = :id");
-    	q.setParameter(":id", id);
+    	Query q = em.createQuery("SELECT m FROM Biglietto m WHERE m.mezzo_timbrante.id = :id");
+    	q.setParameter("id", id);
     	System.out.println(q.getResultList().size());
     }
 }

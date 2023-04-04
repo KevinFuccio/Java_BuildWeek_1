@@ -22,6 +22,13 @@ public class AbbonamentoDAO {
         System.out.println("Abbonamento salvato");
 
     }
+    public static void updateAbbonamento(Abbonamento e) {
+        em.getTransaction().begin();
+        em.merge(e);
+        em.getTransaction().commit(); 
+        System.out.println("Abbonamento salvato");
+
+    }
 
 
     public static void multipleSaveAbbonamento(List<Abbonamento> el) {
@@ -59,7 +66,7 @@ public class AbbonamentoDAO {
     public static boolean validitaAbbonamento(Integer id_tessera,Integer id_abbonamento) {
     	
     	Query q = em.createQuery("SELECT a FROM Abbonamento a WHERE a.tessera.id = :id_tessera");
-    	q.setParameter(":id_tessera", id_tessera);
+    	q.setParameter("id_tessera", id_tessera);
     	List<Abbonamento> resList = q.getResultList();
     	List<Abbonamento> a = resList.stream().filter(e -> e.getId() == id_abbonamento).collect(Collectors.toList());
     	Abbonamento res = a.get(0);

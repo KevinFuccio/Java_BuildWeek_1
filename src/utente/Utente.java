@@ -27,8 +27,7 @@ public class Utente implements Serializable{
 	private Integer id;
 	@OneToMany(mappedBy = "utente")
 	private List<Biglietto>biglietto;
-	@OneToOne(cascade = CascadeType.MERGE)
-	@Cascade(value = CascadeType.SAVE_UPDATE)
+	@OneToOne
 	private Tessera tessera;
 	public Utente() {
 		super();

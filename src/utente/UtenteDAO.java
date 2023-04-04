@@ -12,7 +12,7 @@ public class UtenteDAO {
 
     public static void saveUtente(Utente e) {
         em.getTransaction().begin();
-        em.persist(e);
+        em.merge(e);
         em.getTransaction().commit(); 
         System.out.println("utente salvato");
 

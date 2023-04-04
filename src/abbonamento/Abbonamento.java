@@ -42,6 +42,7 @@ public class Abbonamento implements Serializable{
 		public Abbonamento(Tipologia_abbonamento tipologia_abbonamento,LocalDate data_inizio_abbonamento) {
 			super();
 			this.tipologia_abbonamento = tipologia_abbonamento;
+			this.data_inizio_abbonamento= data_inizio_abbonamento;
 		
 			if(tipologia_abbonamento == Tipologia_abbonamento.Settimanale) {
 				
@@ -75,6 +76,13 @@ public class Abbonamento implements Serializable{
 		}
 		public void setRivenditore(Rivenditore_autorizzato rivenditore) {
 			this.rivenditore = rivenditore;
+		}
+		
+		public void setData_inizio_abbonamento(LocalDate data_inizio_abbonamento) {
+			this.data_inizio_abbonamento = data_inizio_abbonamento;
+		}
+		public void setData_fine_abbonamento(LocalDate data_fine_abbonamento) {
+			this.data_fine_abbonamento = data_fine_abbonamento;
 		}
 		@Override
 		public String toString() {

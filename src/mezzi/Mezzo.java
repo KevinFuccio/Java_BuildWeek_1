@@ -1,7 +1,10 @@
 package mezzi;
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,8 +19,9 @@ import stato.Stato;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "tipologia",discriminatorType = DiscriminatorType.STRING)
 @NamedQuery(name = "Mezzo.findAll",query="SELECT m FROM Mezzo m")
-public abstract class Mezzo {
+public class Mezzo implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

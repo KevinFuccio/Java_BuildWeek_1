@@ -1,8 +1,11 @@
 package stato;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,12 +15,13 @@ import javax.persistence.NamedQuery;
 import mezzi.Mezzo;
 @Entity
 @NamedQuery(name="Stato.findAll", query="SELECT u FROM Stato u")
-public class Stato {
+public class Stato implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private LocalDate inizio;
 	private LocalDate fine;
+	@Enumerated(EnumType.STRING)
 	private Tipologia_stato stato;
 	@ManyToOne
 	private Mezzo mezzo;
