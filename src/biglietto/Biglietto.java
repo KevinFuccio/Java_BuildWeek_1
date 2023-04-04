@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
+import mezzi.Mezzo;
 import rivenditore.Rivenditore_autorizzato;
 import utente.Utente;
 
@@ -26,6 +27,8 @@ public class Biglietto implements Serializable{
 	@ManyToOne
 	private Rivenditore_autorizzato rivenditore;
 	private LocalDate data_emissione_biglietto;
+	@ManyToOne
+	private Mezzo mezzo_timbrante;
 	
 	public LocalDate getData_emissione_biglietto() {
 		return data_emissione_biglietto;

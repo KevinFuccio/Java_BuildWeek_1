@@ -61,6 +61,10 @@ public class RivenditoreDAO {
     	q.setParameter(":inizio", inizio);
     	q.setParameter(":fine", fine);
     	
-    	
+System.out.println(q.getSingleResult());    	
     }
+    
+    
+
+    
 }
