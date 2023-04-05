@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 import mezzi.Mezzo;
 import tappa_mezzo.Tappa_mezzo;
@@ -22,7 +23,7 @@ public class Tratta {
 	private String zona_partenza;
 	private String capolinea;
 	private Integer tempo_medio_percorrenza;
-	@ManyToMany(mappedBy= "tratta")
+	@OneToMany(mappedBy= "tratta")
 	private List<Tappa_mezzo> tappa_mezzo;
 	
 	

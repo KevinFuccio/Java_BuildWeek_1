@@ -38,7 +38,7 @@ public class Mezzo implements Serializable{
 	private List<Biglietto> biglietti_timbrati;
 	@OneToMany(mappedBy = "mezzo")
 	private List<Stato> stato;
-	@ManyToMany(mappedBy= "mezzi")
+	@OneToMany(mappedBy= "mezzi")
 	private List<Tappa_mezzo> tappa_mezzo;
 	
 	public Mezzo() {
@@ -53,10 +53,8 @@ public class Mezzo implements Serializable{
 		this.stato.forEach(e-> e.setMezzo(this));
 		List<Stato> stato_servizio_attuale = this.stato.stream().filter(e -> e.getStato() == Tipologia_stato.Servizio && e.getFine() == null).collect(Collectors.toList());
 		if(!stato_servizio_attuale.isEmpty()) {
-			List<Mezzo> m = new ArrayList();
-			m.add(this);
 			if(this.tappa_mezzo != null) {				
-				this.tappa_mezzo.forEach(e-> e.setMezzi(m));
+				this.tappa_mezzo.forEach(e-> e.setMezziMezzo(this));
 			}
 		}else {
 			System.out.println("il mezzo e in manutenzione.");

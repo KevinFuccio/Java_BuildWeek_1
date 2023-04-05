@@ -80,30 +80,30 @@ public class Main {
 		listaMezzi.add(MezzoDAO.findMezzo(1));
 		listaMezzi.add(MezzoDAO.findMezzo(2));
 		
-		Tappa_mezzo tm = new Tappa_mezzo(listaMezzi,listatratti,LocalDate.now(),LocalDate.now().plusDays(1));
+		Tappa_mezzo tm = new Tappa_mezzo(autobus,tr,LocalDate.now(),LocalDate.now().plusDays(1));
 //		
 ////		
-//		AbbonamentoDAO.saveAbbonamento(a);
-//		BigliettoDAO.saveBiglietto(b);
-//		BigliettoDAO.saveBiglietto(b2);
-//	
-//		TesseraDAO.saveTessera(t);
-//		RivenditoreDAO.saveRivenditore_autorizzato(rivenditore);
-//		UtenteDAO.saveUtente(u);
-//		
-//		StatoDAO.saveStato(s);
-//		StatoDAO.saveStato(s2);
-//		TrattaDAO.saveTratta(tr);
-//		TrattaDAO.saveTratta(tr2);
-//		
-//		MezzoDAO.saveMezzo(autobus);
-//		MezzoDAO.saveMezzo(tram);
-//		Tappa_mezzoDAO.saveTappa_mezzo(tm);
+		AbbonamentoDAO.saveAbbonamento(a);
+		BigliettoDAO.saveBiglietto(b);
+		BigliettoDAO.saveBiglietto(b2);
+	
+		TesseraDAO.saveTessera(t);
+		RivenditoreDAO.saveRivenditore_autorizzato(rivenditore);
+		UtenteDAO.saveUtente(u);
+		
+		StatoDAO.saveStato(s);
+		StatoDAO.saveStato(s2);
+		TrattaDAO.saveTratta(tr);
+		TrattaDAO.saveTratta(tr2);
+		
+		MezzoDAO.saveMezzo(autobus);
+		MezzoDAO.saveMezzo(tram);
+		Tappa_mezzoDAO.saveTappa_mezzo(tm);
 //		
 //		
 //		AbbonamentoDAO.saveAbbonamento(a);
 		
-		Tappa_mezzoDAO.numeroTappaPercorso(1, 1);
+//		Tappa_mezzoDAO.numeroTappaPercorso(1, 1);
 		
 //		RivenditoreDAO.quantita_emessi_periodo(7,LocalDate.now().minusYears(1),LocalDate.now().plusYears(1));
 //		MezzoDAO.sommaBigliettiVidimato(1);

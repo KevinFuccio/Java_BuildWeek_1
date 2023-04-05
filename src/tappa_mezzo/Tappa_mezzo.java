@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
 import mezzi.Mezzo;
@@ -26,10 +27,10 @@ public class Tappa_mezzo implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@ManyToMany(cascade = CascadeType.MERGE)
-	private List<Mezzo> mezzi;
-	@ManyToMany(cascade = CascadeType.MERGE)
-	private List<Tratta> tratta;
+	@ManyToOne(cascade = CascadeType.MERGE)
+	private Mezzo mezzi;
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Tratta tratta;
 	private LocalDate inizio_tappa;
 	private LocalDate fine_tappa;
 	
@@ -39,38 +40,38 @@ public class Tappa_mezzo implements Serializable {
 	}
 
 
-	public Tappa_mezzo(List<Mezzo> mezzi, List<Tratta> tratta, LocalDate inizio_tappa, LocalDate fine_tappa) {
+	public Tappa_mezzo(Mezzo mezzi, Tratta tratta, LocalDate inizio_tappa, LocalDate fine_tappa) {
 		super();
 //		List<Mezzo> mezziFiltrati = this.mezzi.stream().forEach(e).collect(Collectors.toList());
 //		if(!mezziFiltrati.isEmpty()) {			
 			this.mezzi = mezzi;
 			List<Tappa_mezzo> tm = new ArrayList();
 			tm.add(this);
-			this.mezzi.forEach(e->e.setTappa_mezzo(tm));
+			this.mezzi.setTappa_mezzo(tm);
 			this.tratta = tratta;
-			this.tratta.forEach(e->e.setTappa_mezzo(tm));
+			this.tratta.setTappa_mezzo(tm);
 //		}
 		this.inizio_tappa = inizio_tappa;
 		this.fine_tappa = fine_tappa;
 	}
 
 
-	public List<Mezzo> getMezzi() {
+	public Mezzo getMezzi() {
 		return mezzi;
 	}
 
 
-	public void setMezzi(List<Mezzo> mezzi) {
+	public void setMezziMezzo (Mezzo mezzi) {
 		this.mezzi = mezzi;
 	}
 
 
-	public List<Tratta> getTratta() {
+	public Tratta getTratta() {
 		return tratta;
 	}
 
 
-	public void setTratta(List<Tratta> tratta) {
+	public void setTratta(Tratta tratta) {
 		this.tratta = tratta;
 	}
 
