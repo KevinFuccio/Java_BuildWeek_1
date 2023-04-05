@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 
 import biglietto.Biglietto;
 import stato.Stato;
+import tappa_mezzo.Tappa_mezzo;
+import tratta.Tratta;
 
 @Entity
 @DiscriminatorValue("tram")
@@ -20,10 +22,14 @@ public class Tram extends Mezzo {
 		super();
 	}
 
+	
+	
 	public Tram(List<Biglietto> biglietti_timbrati, List<Stato> stato) {
 		super(biglietti_timbrati, stato);
 	}
-	
+
+
+
 	public static Integer getCapienza() {
 		return capienza;
 	}

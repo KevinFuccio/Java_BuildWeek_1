@@ -12,6 +12,7 @@ import abbonamento.Tipologia_abbonamento;
 import biglietto.Biglietto;
 import biglietto.BigliettoDAO;
 import mezzi.Autobus;
+import mezzi.Mezzo;
 import mezzi.MezzoDAO;
 import mezzi.Tram;
 import rivenditore.RivenditoreDAO;
@@ -19,8 +20,12 @@ import rivenditore.Rivenditore_autorizzato;
 import stato.Stato;
 import stato.StatoDAO;
 import stato.Tipologia_stato;
+import tappa_mezzo.Tappa_mezzo;
+import tappa_mezzo.Tappa_mezzoDAO;
 import tessera.Tessera;
 import tessera.TesseraDAO;
+import tratta.Tratta;
+import tratta.TrattaDAO;
 import utente.Utente;
 import utente.UtenteDAO;
 import utils.JpaUtil;
@@ -29,55 +34,71 @@ public class Main {
 //	static  EntityManager em = JpaUtil.getEntityManagerFactory().createEntityManager();
 	public static void main(String[] args) {
 		
-//		Abbonamento a = new Abbonamento(Tipologia_abbonamento.Mensile,LocalDate.now());
-//		Biglietto b = new Biglietto(false,LocalDate.now());
+		Abbonamento a = new Abbonamento(Tipologia_abbonamento.Mensile,LocalDate.now());
+		Biglietto b = new Biglietto(false,LocalDate.now());
+		
+		Biglietto b2 = new Biglietto(false,LocalDate.now());
+		
+		List<Abbonamento> listaAbbonamenti = new ArrayList();
+		listaAbbonamenti.add(a);
+
+		List<Biglietto> listaBiglietti = new ArrayList();
+		listaBiglietti.add(b);
+		listaBiglietti.add(b2);
+		
+		List<Biglietto> listaBiglietti2 = new ArrayList();
+		listaBiglietti2.add(b2);
+		
+		
+		
+		Tessera t = new Tessera(LocalDate.now(),listaAbbonamenti);
+		Rivenditore_autorizzato rivenditore = new Rivenditore_autorizzato(listaAbbonamenti,listaBiglietti);
+		
+		Utente u = new Utente(listaBiglietti,t);
+		
+		Stato s = new Stato(LocalDate.now(), null, Tipologia_stato.Servizio);
+		Stato s2 = new Stato(LocalDate.now().minusDays(2), null, Tipologia_stato.Manutenzione);
+		List<Stato> listaStato = new ArrayList();
+		listaStato.add(s);
+		List<Stato> listaStato2 = new ArrayList();
+		listaStato2.add(s2);
+		
+		Tratta tr = new Tratta("Roma","Milano",4);
+		Tratta tr2 = new Tratta("Roma","Verona",5);
+		
+		List<Tratta> listatratti = new ArrayList();
+		listatratti.add(tr);
+		listatratti.add(tr2);
+		List<Tratta> listatratti2 = new ArrayList();
+		
+		
+		
+		Autobus autobus = new Autobus(listaBiglietti,listaStato);
+		Tram tram = new Tram(listaBiglietti2,listaStato2);
+		
+		List<Mezzo> listaMezzi = new ArrayList();
+		listaMezzi.add(tram);
+		listaMezzi.add(autobus);
+		
+		Tappa_mezzo tm = new Tappa_mezzo(listaMezzi,listatratti,LocalDate.now(),LocalDate.now().plusDays(1));
 //		
-//		Biglietto b2 = new Biglietto(false,LocalDate.now());
-//		
-//		List<Abbonamento> listaAbbonamenti = new ArrayList();
-//		listaAbbonamenti.add(a);
-//
-//		List<Biglietto> listaBiglietti = new ArrayList();
-//		listaBiglietti.add(b);
-//		listaBiglietti.add(b2);
-//		
-//		List<Biglietto> listaBiglietti2 = new ArrayList();
-//		listaBiglietti2.add(b2);
-//		
-//		
-//		
-//		Tessera t = new Tessera(LocalDate.now(),listaAbbonamenti);
-//		Rivenditore_autorizzato rivenditore = new Rivenditore_autorizzato(listaAbbonamenti,listaBiglietti);
-//		
-//		Utente u = new Utente(listaBiglietti,t);
-//		
-//		Stato s = new Stato(LocalDate.now(), null, Tipologia_stato.Servizio);
-//		Stato s2 = new Stato(LocalDate.now().minusDays(2), null, Tipologia_stato.Manutenzione);
-//		
-//		List<Stato> listaStati = new ArrayList();
-//		listaStati.add(s);
-//		List<Stato> listaStati2 = new ArrayList();
-//		listaStati2.add(s2);
-//		
-//		Autobus autobus = new Autobus(listaBiglietti,listaStati);
-//		
-//		Tram tram = new Tram(listaBiglietti2,listaStati2);
-//		
-//		
-//		
-//		AbbonamentoDAO.saveAbbonamento(a);
-//		BigliettoDAO.saveBiglietto(b);
-//		BigliettoDAO.saveBiglietto(b2);
-//	
-//	TesseraDAO.saveTessera(t);
-//		RivenditoreDAO.saveRivenditore_autorizzato(rivenditore);
-//		UtenteDAO.saveUtente(u);
-//		
-//		StatoDAO.saveStato(s);
-//		StatoDAO.saveStato(s2);
-//		
-//		MezzoDAO.saveMezzo(autobus);
-//		MezzoDAO.saveMezzo(tram);
+////		
+		AbbonamentoDAO.saveAbbonamento(a);
+		BigliettoDAO.saveBiglietto(b);
+		BigliettoDAO.saveBiglietto(b2);
+	
+		TesseraDAO.saveTessera(t);
+		RivenditoreDAO.saveRivenditore_autorizzato(rivenditore);
+		UtenteDAO.saveUtente(u);
+		
+		StatoDAO.saveStato(s);
+		StatoDAO.saveStato(s2);
+		TrattaDAO.saveTratta(tr);
+		TrattaDAO.saveTratta(tr2);
+		
+		MezzoDAO.saveMezzo(autobus);
+		MezzoDAO.saveMezzo(tram);
+//		Tappa_mezzoDAO.saveTappa_mezzo(tm);
 //		
 //		
 //		AbbonamentoDAO.saveAbbonamento(a);

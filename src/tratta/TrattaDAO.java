@@ -1,24 +1,26 @@
-package stato;
+package tratta;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
+import mezzi.Mezzo;
 import utils.JpaUtil;
 
-public class StatoDAO {
+public class TrattaDAO {
 	static EntityManager em = JpaUtil.entityManagerFactory.createEntityManager();
 
-    public static void saveStato(Stato e) {
+    public static void saveTratta(Tratta e) {
         em.getTransaction().begin();
         em.merge(e);
         em.getTransaction().commit(); 
-        System.out.println("Stato  salvato");
+        System.out.println("Tratta  salvato");
 
     }
 
 
-    public static void multipleSaveStato (List<Stato> el) {
+    public static void multipleSaveTratta (List<Tratta> el) {
         em.getTransaction().begin();
         el.forEach(e -> em.persist(e));
         em.getTransaction().commit();
@@ -26,9 +28,9 @@ public class StatoDAO {
 
 
 
-    public static Stato  findStato (Integer id) {
+    public static Tratta findTratta (Integer id) {
         em.getTransaction().begin();
-        Stato  e = em.find(Stato .class, id);
+        Tratta e = em.find(Tratta.class, id);
         em.getTransaction().commit();
         return e;
     }
@@ -36,18 +38,17 @@ public class StatoDAO {
     
 
 
-    public static void removeStato(Stato  e) {
+    public static void removeTratta(Tratta e) {
         em.getTransaction().begin();
         em.remove(e);
         em.getTransaction().commit();
-        System.out.println("Stato eliminato!");
+        System.out.println("Tratta eliminato!");
     };
 
 
     @SuppressWarnings("unchecked")
-    public static List<Stato> StatoFindAll(){
-        Query q = em.createNamedQuery("Stato.findAll");
-        return (List<Stato> ) q.getResultList();
+    public static List<Tratta> MezzoFindAll(){
+        Query q = em.createNamedQuery("Tratta.findAll");
+        return (List<Tratta> ) q.getResultList();
     }
-    
 }
