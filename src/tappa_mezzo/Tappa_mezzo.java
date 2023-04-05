@@ -28,7 +28,7 @@ public class Tappa_mezzo implements Serializable {
 	private Integer id;
 	@ManyToMany(cascade = CascadeType.MERGE)
 	private List<Mezzo> mezzi;
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.MERGE)
 	private List<Tratta> tratta;
 	private LocalDate inizio_tappa;
 	private LocalDate fine_tappa;

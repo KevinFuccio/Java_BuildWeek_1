@@ -51,4 +51,10 @@ public class Tappa_mezzoDAO {
         Query q = em.createNamedQuery("Tappa_mezzo.findAll");
         return (List<Tappa_mezzo> ) q.getResultList();
     }
+    public static void numeroTappaPercorso(Integer id_mezzo,Integer id_tratta) {
+    	Query q = em.createQuery("SELECT m FROM Tappa_mezzo m WHERE m.id=:id_mezzo");
+    	q.setParameter("id_mezzo", id_mezzo);
+//    	q.setParameter("id_tratta", id_tratta);
+    	System.out.println(q.getResultList().size());
+    }
 }

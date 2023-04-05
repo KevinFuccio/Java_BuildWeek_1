@@ -39,7 +39,7 @@ public class Mezzo implements Serializable{
 	@OneToMany(mappedBy = "mezzo")
 	private List<Stato> stato;
 	@ManyToMany(mappedBy= "mezzi")
-	private List<Tappa_mezzo> Tappa_mezzo;
+	private List<Tappa_mezzo> tappa_mezzo;
 	
 	public Mezzo() {
 		
@@ -55,8 +55,8 @@ public class Mezzo implements Serializable{
 		if(!stato_servizio_attuale.isEmpty()) {
 			List<Mezzo> m = new ArrayList();
 			m.add(this);
-			if(this.Tappa_mezzo != null) {				
-				this.Tappa_mezzo.forEach(e-> e.setMezzi(m));
+			if(this.tappa_mezzo != null) {				
+				this.tappa_mezzo.forEach(e-> e.setMezzi(m));
 			}
 		}else {
 			System.out.println("il mezzo e in manutenzione.");
@@ -85,11 +85,11 @@ public class Mezzo implements Serializable{
 	
 
 	public List<Tappa_mezzo> getTappa_mezzo() {
-		return Tappa_mezzo;
+		return tappa_mezzo;
 	}
 
 	public void setTappa_mezzo(List<Tappa_mezzo> tappa_mezzo) {
-		Tappa_mezzo = tappa_mezzo;
+		tappa_mezzo = tappa_mezzo;
 	}
 
 	@Override

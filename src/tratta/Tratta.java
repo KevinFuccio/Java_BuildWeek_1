@@ -23,7 +23,7 @@ public class Tratta {
 	private String capolinea;
 	private Integer tempo_medio_percorrenza;
 	@ManyToMany(mappedBy= "tratta")
-	private List<Tappa_mezzo> Tappa_mezzo;
+	private List<Tappa_mezzo> tappa_mezzo;
 	
 	
 	
@@ -59,10 +59,10 @@ public class Tratta {
 	
 	
 	public List<Tappa_mezzo> getTappa_mezzo() {
-		return Tappa_mezzo;
+		return tappa_mezzo;
 	}
 	public void setTappa_mezzo(List<Tappa_mezzo> tappa_mezzo) {
-		Tappa_mezzo = tappa_mezzo;
+		tappa_mezzo = tappa_mezzo;
 	}
 	public Integer getId() {
 		return id;
