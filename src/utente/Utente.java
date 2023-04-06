@@ -58,7 +58,7 @@ public class Utente implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Utente [Biglietto=" + getBiglietto() + ", Tessera=" + getTessera() + ", Id=" + getId()
+		return "Utente [Tessera=" + getTessera() + ", Id=" + getId()
 				+ "]";
 	}
 

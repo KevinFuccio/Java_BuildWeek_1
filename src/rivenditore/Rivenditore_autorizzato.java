@@ -58,7 +58,7 @@ public class Rivenditore_autorizzato implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Rivenditore_autorizzato [Id=" + getId() + ", Abbonamenti=" + getAbbonamenti()
+		return "Rivenditore_autorizzato [Id=" + getId()
 				+ ", Biglietti=" + getBiglietti() + "]";
 	}
 	

@@ -75,7 +75,7 @@ public class Tessera implements Serializable{
 	@Override
 	public String toString() {
 		return "Tessera [Data_inizio_tessera=" + getData_inizio_tessera() + ", Data_fine_tessera="
-				+ getData_fine_tessera() + ", Utente=" + getUtente() + ", Abbonamenti=" + getAbbonamenti()
+				+ getData_fine_tessera() 
 				+ ", Id=" + getId() + "]";
 	}
 	

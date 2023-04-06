@@ -78,7 +78,7 @@ public class Stato implements Serializable {
 	@Override
 	public String toString() {
 		return "Stato [Inizio=" + getInizio() + ", Fine=" + getFine() + ", Stato=" + getStato()
-				+ ", Mezzo=" + getMezzo() + ", Id=" + getId() + "]";
+				+ ", Id=" + getId() + "]";
 	}
 
 	

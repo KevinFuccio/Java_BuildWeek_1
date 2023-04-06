@@ -63,7 +63,7 @@ public class Tratta {
 		return tappa_mezzo;
 	}
 	public void setTappa_mezzo(List<Tappa_mezzo> tappa_mezzo) {
-		tappa_mezzo = tappa_mezzo;
+		this.tappa_mezzo = tappa_mezzo;
 	}
 	public Integer getId() {
 		return id;
@@ -71,8 +71,7 @@ public class Tratta {
 	@Override
 	public String toString() {
 		return "Tratta [Zona_partenza=" + getZona_partenza() + ", Capolinea=" + getCapolinea()
-				+ ", Tempo_medio_percorrenza=" + getTempo_medio_percorrenza() + ",Mezzo=" + getTappa_mezzo()
-				+ ", Id=" + getId() + "]";
+				+ ", Tempo_medio_percorrenza=" + getTempo_medio_percorrenza() + ", Id=" + getId() + "]";
 	}
 	
 	

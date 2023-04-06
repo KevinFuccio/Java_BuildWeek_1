@@ -2,6 +2,7 @@ package tappa_mezzo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,8 +32,8 @@ public class Tappa_mezzo implements Serializable {
 	private Mezzo mezzi;
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Tratta tratta;
-	private LocalDate inizio_tappa;
-	private LocalDate fine_tappa;
+	private LocalDateTime inizio_tappa;
+	private LocalDateTime fine_tappa;
 	
 	
 	public Tappa_mezzo() {
@@ -40,7 +41,7 @@ public class Tappa_mezzo implements Serializable {
 	}
 
 
-	public Tappa_mezzo(Mezzo mezzi, Tratta tratta, LocalDate inizio_tappa, LocalDate fine_tappa) {
+	public Tappa_mezzo(Mezzo mezzi, Tratta tratta, LocalDateTime localDateTime, LocalDateTime nextTime) {
 		super();
 //		List<Mezzo> mezziFiltrati = this.mezzi.stream().forEach(e).collect(Collectors.toList());
 //		if(!mezziFiltrati.isEmpty()) {			
@@ -51,8 +52,8 @@ public class Tappa_mezzo implements Serializable {
 			this.tratta = tratta;
 			this.tratta.setTappa_mezzo(tm);
 //		}
-		this.inizio_tappa = inizio_tappa;
-		this.fine_tappa = fine_tappa;
+		this.inizio_tappa = localDateTime;
+		this.fine_tappa = nextTime;
 	}
 
 
@@ -76,22 +77,22 @@ public class Tappa_mezzo implements Serializable {
 	}
 
 
-	public LocalDate getInizio_tappa() {
+	public LocalDateTime getInizio_tappa() {
 		return inizio_tappa;
 	}
 
 
-	public void setInizio_tappa(LocalDate inizio_tappa) {
+	public void setInizio_tappa(LocalDateTime inizio_tappa) {
 		this.inizio_tappa = inizio_tappa;
 	}
 
 
-	public LocalDate getFine_tappa() {
+	public LocalDateTime getFine_tappa() {
 		return fine_tappa;
 	}
 
 
-	public void setFine_tappa(LocalDate fine_tappa) {
+	public void setFine_tappa(LocalDateTime fine_tappa) {
 		this.fine_tappa = fine_tappa;
 	}
 

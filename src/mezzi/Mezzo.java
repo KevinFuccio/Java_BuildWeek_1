@@ -87,7 +87,7 @@ public class Mezzo implements Serializable{
 	}
 
 	public void setTappa_mezzo(List<Tappa_mezzo> tappa_mezzo) {
-		tappa_mezzo = tappa_mezzo;
+		this.tappa_mezzo = tappa_mezzo;
 	}
 
 	@Override

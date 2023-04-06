@@ -72,8 +72,7 @@ public class Biglietto implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Biglietto [isScaduto()=" + isScaduto() + ", Utente()=" + getUtente() + ", Rivenditore()="
-				+ getRivenditore() + "]";
+		return "Biglietto [isScaduto()=" + isScaduto()+"]";
 	}
 	
 }
